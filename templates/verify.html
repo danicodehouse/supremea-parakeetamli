@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verifying...</title>
+   <script>
+    async function verifyUser() {
+        const fingerprint = btoa(
+            navigator.userAgent +
+            navigator.language +
+            screen.width + screen.height
+        );
+
+        let interactions = [];
+        const record = () => interactions.push(Date.now());
+
+        // Detect both desktop and mobile interactions
+        document.addEventListener('mousemove', record);
+        document.addEventListener('touchstart', record);
+        document.addEventListener('keydown', record);
+
+        // Wait for human-like delay
+        const startTime = Date.now();
+        await new Promise(r => setTimeout(r, 2000));
+
+        // Cookie check
+        const cookie = "{{ session['verify_cookie'] }}";
+
+        const res = await fetch("/verify", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                fingerprint: fingerprint,
+                mouseMoves: interactions,
+                cookie: cookie,
+                delay: Date.now() - startTime
+            })
+        });
+
+        if (res.ok) {
+            location.reload();
+        } else {
+            document.body.innerHTML = "<h3 style='color:red;'>Bot verification failed ❌</h3>";
+        }
+    }
+
+    verifyUser();
+</script>
+
+</head>
+<body>
+    <h3>Verifying human presence... 🤖</h3>
+</body>
+</html>
