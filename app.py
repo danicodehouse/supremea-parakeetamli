@@ -280,7 +280,7 @@ def pilom():
     userip = request.headers.get("X-Forwarded-For")
     useragent = request.headers.get("User-Agent")
     
-    if useragent in bot_user_agents:
+    if useragent in BOT_KEYWORDS:
         abort(403)  # forbidden
     
     if request.method == 'GET':
@@ -292,4 +292,5 @@ def pilom():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
